@@ -35,7 +35,15 @@ public class Solution {
     }
 
     private Point getMaximumPoint(List<Point> points){
-        return new Point(0, 0);
+        long x = Long.MIN_VALUE;
+        long y = Long.MIN_VALUE;
+
+        for(Point p : points){
+            if(p.x > x) x = p.x;
+            if(p.y > y) y = p.x;
+        }
+
+        return new Point(x, y);
     }
 
     public String[] solution(int[][] line){
