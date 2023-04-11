@@ -47,6 +47,15 @@ public class Solution {
     }
 
     public String[] solution(int[][] line){
+        List<Point> points = new ArrayList<Point>();
+        for(int i=0; i<line.length-1; i++){
+            for(int j=i+1; j<line.length; j++){
+                Point intersectionPoint = intersection(line[i][0], line[i][1], line[i][2], line[j][0], line[j][1], line[j][2]);
+                if(intersectionPoint!=null){
+                    points.add(intersectionPoint);
+                }
+            }
+        }
 
         String[] result = new String[10];
         return result;
