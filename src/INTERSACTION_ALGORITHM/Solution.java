@@ -57,7 +57,30 @@ public class Solution {
             }
         }
 
-        String[] result = new String[10];
+        Point minPoint = getMinmumPoint(points);
+        Point maxPoint = getMaximumPoint(points);
+
+        int rowLength = (int)(maxPoint.x - minPoint.x + 1);
+        int colLength = (int)(maxPoint.y - minPoint.y + 1);
+
+        char[][] coordinate = new char[rowLength][colLength];
+        for(int i=0; i<colLength; i++){
+            for(int j=0; j<rowLength; j++){
+                coordinate[i][j] = '.';
+            }
+        }
+
+        for(Point p : points){
+            int x = (int)(p.x - minPoint.x);
+            int y = (int)((maxPoint.y - minPoint.y) - (p.y - minPoint.y));
+            coordinate[y][x] = '*';
+        }
+
+        String[] result = new String[coordinate.length];
+        for(int i=0; i<result.length; i++){
+            result[i] = new String(coordinate[i]);
+        }
+
         return result;
     }
 }
